@@ -1,0 +1,44 @@
+@startuml
+namespace sample {
+    class Author << (S,Aquamarine) >> {
+        + ID int
+        + Name string
+
+        + GetName() string
+
+    }
+    class Book << (S,Aquamarine) >> {
+        + ID int
+        + Name string
+        + Author *Author
+
+        + GetName() string
+        + GetID() int
+
+    }
+    class Library << (S,Aquamarine) >> {
+        + ID int
+        + Name string
+        + Books []*Book
+
+        + GetName() string
+        + GetID() int
+        + SetName(n string) 
+
+    }
+    interface NameGetter  {
+        + GetName() string
+
+    }
+    class PublicLibrary << (S,Aquamarine) >> {
+        + City string
+
+    }
+}
+"sample.Library" *-- "sample.PublicLibrary"
+
+"sample.NameGetter" <|-- "sample.Author"
+"sample.NameGetter" <|-- "sample.Book"
+"sample.NameGetter" <|-- "sample.Library"
+
+@enduml
