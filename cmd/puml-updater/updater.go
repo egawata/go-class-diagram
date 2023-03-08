@@ -14,8 +14,13 @@ var (
 	outFile string
 )
 
+// MEMO:
+// fsnotify は、指定したディレクトリを「再帰的に」監視しない。
+// [fsnotify/fsnotify: Cross-platform file system notifications for Go.](https://github.com/fsnotify/fsnotify#are-subdirectories-watched-too)
+// 再帰的に監視する方法を検討する。
+
 func init() {
-	flag.StringVar(&srcDir, "watch", "", "directory to be watched")
+	flag.StringVar(&srcDir, "watch", "./", "directory to be watched")
 	flag.StringVar(&outFile, "o", "./out.puml", "output file (.puml)")
 }
 
